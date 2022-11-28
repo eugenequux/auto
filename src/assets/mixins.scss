@@ -1,0 +1,22 @@
+$small: 768px;
+$medium: 1024px;
+$large: 1440px;
+
+$grid-breakpoints: (
+  "small": $small,
+  "medium": $medium,
+  "large": $large,
+);
+
+$display-breakpoints: (
+  "mobile": "only screen and (max-width: #{map-get($grid-breakpoints, 'small') - 1})",
+  "tablet": "only screen and (max-width: #{map-get($grid-breakpoints, 'medium') - 1})",
+  "laptop": "only screen and (max-width: #{map-get($grid-breakpoints, 'large') - 1})",
+  "desktop": "only screen and (min-width: #{map-get($grid-breakpoints, 'large')})",
+);
+
+@mixin for-size($size) {
+  @media #{map-get($display-breakpoints, $size)} {
+    @content;
+  }
+}
